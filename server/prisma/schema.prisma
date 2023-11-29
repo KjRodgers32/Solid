@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @unique
+  first_name String
+  last_name String
+  email String
+  bio String
+  street_address String
+  zip_code String
+  profile_pic String
+  created_at DateTime
+
+  @@index([id, zip_code])
+}
+
+model Task {
+  task_id Int @id @unique 
+  created_user_id Int 
+  assigned_user_id Int?
+  created_at DateTime
+  name String
+  description String
+
+  @@index([created_user_id])
+}
+
+model Solid_Points {
+  solid_points_id Int @id @unique
+  user_id Int
+  points Int @default(15)
+
+  @@index([user_id])
+}
