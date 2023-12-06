@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import logo from "../../assets/Solid (1)-fotor-bg-remover-20231118221321.png"
 
 const Login = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
   return (
     <div>
       <div className="h-screen w-full">
@@ -22,6 +25,9 @@ const Login = () => {
                 <form className="flex flex-col text-left">
                   <input type="email" placeholder="Enter Your Email" />
                   <input type="text" placeholder="Enter Your Password" />
+                  <button type="submit" className="flex-start mt-2">
+                    Login
+                  </button>
                 </form>
               </div>
             </div>
